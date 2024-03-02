@@ -10,7 +10,17 @@ dotenv.config({
     path: `/env`
 });
 
-kingDB();
+kingDB()
+
+.then(()=>{
+    app.listen(process.env.PORT || 8000, ()=>{
+        console.log(`server is running at port : ${process.env.PORT}`);
+    })
+})
+.catch((err)=>{
+    console.log("MONGO DB CONNECTION FAILED !!! ",err)
+})
+    
 
 
 //method 1 to connect db
